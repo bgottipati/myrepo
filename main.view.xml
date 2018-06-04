@@ -1,0 +1,107 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns="sap.m"
+		controllerName="mqcl1.main" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Chat Application using MqTT">
+		<content>
+			    <VBox width="100%" id="__vboxP">
+			        <items>
+			            <Panel width="95%" class="sapUiResponsiveMargin">
+			                <VBox xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" width="95%" direction="Column" id="__vbox0_copy" class="sapUiResponsiveMargin">
+			                    <items>
+			                            <tnt:ToolHeader id="toolHeaderConnected" busyIndicatorDelay="0">									        
+									        <Input id="inputNickName" placeholder="Enter your nick Name ..." width="200px" fieldWidth="100%" liveChange="handleUserNameEntered" />
+									        <ToggleButton id="btnEnterLobby" enabled="false" icon="sap-icon://enter-more" text="Enter the Lobby" type="Transparent" press="btnhandleEnterLobby">
+									            <layoutData>
+									                <OverflowToolbarLayoutData priority="NeverOverflow" />
+									            </layoutData>
+									        </ToggleButton>
+									        <ToolbarSpacer />
+									        <Text text="Lobby" wrapping="false">
+									            <layoutData>
+									                <OverflowToolbarLayoutData priority="Disappear" />
+									            </layoutData>
+									        </Text>
+									        <ToolbarSpacer />
+			                            	<core:Icon
+			                            		id="iconConnected"
+												src="sap-icon://connected"
+												class="size2"
+												color="green" visible="false">
+												<core:layoutData>
+													<FlexItemData growFactor="1" />
+												</core:layoutData>
+											</core:Icon>
+											<core:Icon
+												id="iconDisconnected"
+												src="sap-icon://disconnected"
+												class="size2"
+												color="grey" visible="true" >
+												<core:layoutData>
+													<FlexItemData growFactor="2" />
+												</core:layoutData>
+											</core:Icon>
+									    </tnt:ToolHeader>
+									<FeedInput post="onLobbyPost" width="90%" id="__input0_copy" placeholder="Shout out in the Lobby"/>
+									<ScrollContainer height="500px" horizontal="false" vertical="true">
+                			        <List showSeparators="Inner" height="20%" width="100%" items="{/lobbyFeedDataCollection}" noDataText="No one in the Lobby" id="listLobbyFeed">
+                			                <FeedListItem counter="0" icon="sap-icon://personnel-view" sender="{Author}" text="{Text}" info="{Type}" timestamp="{Date}" maxCharacters="0"/>
+                			        </List>
+                			        </ScrollContainer>
+			                        
+			                    </items>
+			                </VBox> 
+			            </Panel>
+			        <HBox width="100%" id="__hbox0">
+			            <items>
+			                <VBox width="30%" direction="Column" id="__vbox1" class="sapUiResponsiveMargin">
+			                   <items>
+			                            <tnt:ToolHeader>
+									        <Button press="onMenuButtonPress"  icon="sap-icon://menu2" type="Transparent">
+									            <layoutData>
+									                <OverflowToolbarLayoutData priority="NeverOverflow" />
+									            </layoutData>
+									        </Button>
+									        <ToolbarSpacer />
+									        <Button icon="sap-icon://create" text="Create New Group" type="Transparent" press="handleUserNamePress">
+									            <layoutData>
+									                <OverflowToolbarLayoutData priority="NeverOverflow" />
+									            </layoutData>
+									        </Button>
+									    </tnt:ToolHeader>
+                			        <tnt:NavigationList id="navigationListq" width="100%">
+                			            <tnt:NavigationListItem items="{/peopleFeedDataCollection}" id="navigationPeopleListq" text="People" icon="sap-icon://employee">
+                			                <tnt:NavigationListItem icon="sap-icon://employee" text="{name}"/>
+                			       	    </tnt:NavigationListItem>
+                		       	        <tnt:NavigationListItem items="{/groupsFeedDataCollection}" id="navigationGroupsListq" text="Groups" icon="sap-icon://building">
+                		                    <tnt:NavigationListItem text="{name}"/>
+                		       	        </tnt:NavigationListItem>
+                		   	        </tnt:NavigationList>
+			                   </items>
+			                </VBox>
+			                <VBox width="85%" direction="Column" id="__vbox0" class="sapUiResponsiveMargin">
+			                    <items>
+			                            <tnt:ToolHeader>
+									        <ToolbarSpacer />
+									    </tnt:ToolHeader>
+			                        <ScrollContainer height="400px" horizontal="false" vertical="true">
+			                        <List growing="true" noDataText="Drop list items here" id="__list4">
+			                            <items>
+			                                <FeedListItem counter="0" icon="sap-icon://personnel-view" sender="John Doe" text="Feed List Item text" info="Waiting for Approval" timestamp="Dec 02, 2012" maxCharacters="0" />
+			                                <FeedListItem counter="0" icon="sap-icon://personnel-view" sender="John Doe" text="Feed List Item text" info="Waiting for Approval" timestamp="Dec 02, 2012" maxCharacters="0" />
+			                                <FeedListItem counter="0" icon="sap-icon://personnel-view" sender="John Doe" text="Feed List Item text" info="Waiting for Approval" timestamp="Dec 02, 2012" maxCharacters="0" />
+			                                <FeedListItem counter="0" icon="sap-icon://personnel-view" sender="John Doe" text="Feed List Item text" info="Waiting for Approval" timestamp="Dec 02, 2012" maxCharacters="0" />
+			                                <FeedListItem counter="0" icon="sap-icon://personnel-view" sender="John Doe" text="Feed List Item text" info="Waiting for Approval" timestamp="Dec 02, 2012" maxCharacters="0" />
+			                                <FeedListItem counter="0" icon="sap-icon://personnel-view" sender="John Doe" text="Feed List Item text" info="Waiting for Approval" timestamp="Dec 02, 2012" maxCharacters="0" />
+			                            </items>
+			                        </List>
+			                        </ScrollContainer>
+			                        <FeedInput id="__input0"/>
+			                    </items>
+			                </VBox>
+			            </items>
+			        </HBox>
+			    </items>
+			  </VBox>
+		</content>
+	</Page>
+</core:View>
